@@ -9,7 +9,7 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    pass
+    return (a_number % 2) != 0
 
 
 def fix_it(moves=True, should_move=True):
@@ -18,12 +18,19 @@ def fix_it(moves=True, should_move=True):
     Using the engineering flowchart for the rules, return the apropriate
     response to the input parameters.
     Use conditional statements: if, else, elif etc.
-    This function should return either:
+    This function should return either:""
     "WD-40"
     "Duct Tape"
     "No Problem"
     """
-    pass
+    if moves and should_move:
+        return "No Problem"
+    elif moves and not should_move:
+        return "Duct Tape"
+    elif not moves and should_move:
+        return "WD-40"
+    elif not moves and not should_move:
+        return "No Problem"
 
 
 def loops_1a():
@@ -33,7 +40,10 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    pass
+    list_star = []
+    for a in range(10):
+        list_star.append("*")
+    return list_star
 
 
 def star_map():
@@ -44,7 +54,13 @@ def star_map():
     if it's even. Reuse the is odd function that you've already written.
     E.g.: ["!", "*", "!", "*", "!", "*", "!", "*", "!", "*"]
     """
-    pass
+    def star_and_bang(a_number):
+        if is_odd(a_number):
+            return "*"
+        else:
+            return "!"
+    print (map(star_and_bang, range(10)))
+    return map(star_and_bang, range(10))
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -55,7 +71,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     a string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
-    pass
+    symbol_list = []
+    for i in range(5):
+        symbol_list.append("#")
+    print (symbol_list)
+    return symbol_list
 
 
 def loops_2():
@@ -75,8 +95,17 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
+
+          i love beyonce
     """
-    pass
+star_cloud_list = []
+for i in range(10):
+    star_square = []
+    for j in range(10):
+        star_square.append("*")
+    star_cloud_list.append(star_square)
+
+return star_cloud_list
 
 
 def loops_3():
@@ -100,7 +129,15 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    pass
+    number_suqare = []
+    for i in range(10):
+        number_line = []
+        for j in range(10):
+            number_line.append(str(i))
+        number_square.append(number_line)
+
+    print(number_square)
+    return number_square
 
 
 def loops_4():
@@ -118,7 +155,15 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    pass
+    number_box = []
+    for i in range(10):
+        number_set = {}
+        for j in range(10):
+            number_set.append(j)
+        number_box.append(number_set)
+
+    print(number_box)
+    return number_box
 
 
 def loops_5():
@@ -143,7 +188,14 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    pass
+
+    number_square = []
+    for i in range(5):
+        coordinates_row = []
+        for j in range(5):
+            coordinates_row.append('(i{}, j{})'.format(i, j))
+    print(number_square)
+    return(number_square)
 
 
 def loops_6():
@@ -166,7 +218,14 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    pass
+    the_wadge = []
+
+    for i in range(10):
+        row = []
+        for j in range(i + 1):
+            row.append(j)
+        the_wadge.append(row)
+    return the_wadge
 
 
 def loops_7():
