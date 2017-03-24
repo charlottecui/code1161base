@@ -72,8 +72,9 @@ def loops_1c(number_of_items=5, symbol="#"):
     E.g.: ['#', '#', '#', '#', '#']
     """
     symbol_list = []
-    for i in range(5):
-        symbol_list.append("#")
+    for i in range(number_of_items):
+        symbol_list.append(symbol)
+
     print (symbol_list)
     return symbol_list
 
@@ -96,16 +97,14 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
 
-          i love beyonce
-    """
-star_cloud_list = []
-for i in range(10):
-    star_square = []
-    for j in range(10):
-        star_square.append("*")
-    star_cloud_list.append(star_square)
-
-return star_cloud_list
+"""
+    star_cloud_list = []
+    for i in range(10):
+        star_square = []
+        for j in range(10):
+            star_square.append("*")
+        star_cloud_list.append(star_square)
+    return star_cloud_list
 
 
 def loops_3():
@@ -129,12 +128,12 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    number_suqare = []
+    number_square = []
     for i in range(10):
-        number_line = []
+        number_row = []
         for j in range(10):
-            number_line.append(str(i))
-        number_square.append(number_line)
+            number_row.append(str(i))
+        number_square.append(number_row)
 
     print(number_square)
     return number_square
@@ -155,15 +154,15 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    number_box = []
+    number_square = []
     for i in range(10):
-        number_set = {}
+        number_row = []
         for j in range(10):
-            number_set.append(j)
-        number_box.append(number_set)
+            number_row.append(str(j))
+        number_square.append(number_row)
 
-    print(number_box)
-    return number_box
+    print(number_square)
+    return number_square
 
 
 def loops_5():
@@ -190,10 +189,11 @@ def loops_5():
     """
 
     number_square = []
-    for i in range(5):
+    for i in range(10):
         coordinates_row = []
         for j in range(5):
-            coordinates_row.append('(i{}, j{})'.format(i, j))
+            coordinates_row.append("(i" + str(i) + ", j" + str(j) + ")")
+        number_square.append(coordinates_row)
     print(number_square)
     return(number_square)
 
@@ -223,7 +223,7 @@ def loops_6():
     for i in range(10):
         row = []
         for j in range(i + 1):
-            row.append(j)
+            row.append(str(j))
         the_wadge.append(row)
     return the_wadge
 
@@ -249,7 +249,17 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    pass
+    pyramidList = []
+    for index in range(5):
+        stacklist = []
+        for j in range(9):
+            if (5 - index - 2 < j and j < index + 5):
+                stacklist.append("*")
+            else:
+                stacklist.append(" ")
+            pyramidList.append(stacklist)
+
+    return pyramidList
 
 
 def lp(some_kind_of_list, exercise_name):

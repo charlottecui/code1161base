@@ -12,7 +12,6 @@ def loop_ranger(start, stop=None, step=1):
 
     Do this using any method apart from just using range()
     """
-    pass
 
 
 def lone_ranger(start, stop, step):
@@ -47,7 +46,11 @@ def stubborn_asker(low, high):
     Ask for a number, and if the response is outside the bounds keep asking
     until you get a number that you think is OK
     """
-    pass
+
+    message = "Give me a number between {low}, and {high}:". format(low=low,
+                                                                    high=high)
+    input_number = int(raw_input(message))
+    print(low < input_number, input_number)
 
 
 def not_number_rejector(message):
@@ -67,6 +70,7 @@ def super_asker(low, high):
     that does it all!
     """
     pass
+
 
 if __name__ == "__main__":
     # this section does a quick test on your results and prints them nicely.
