@@ -257,8 +257,8 @@ def loops_7():
                 stacklist.append("*")
             else:
                 stacklist.append(" ")
-            pyramidList.append(stacklist)
-
+        pyramidList.append(stacklist)
+    print (pyramidList)
     return pyramidList
 
 
