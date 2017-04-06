@@ -5,7 +5,6 @@ Steps on the way to making your own guessing game.
 from __future__ import division
 from __future__ import print_function
 from exercise1 import not_number_rejector
-from exercise1 import super_asker
 import random
 
 
@@ -28,7 +27,50 @@ def advancedGuessingGame():
     Remember to think modular. Try to keep your functions small and single
     purpose if you can!
     """
-    pass
+    print("Welcome to my guessing game")
+    print("Let's pick both od the bounds")
+
+    check = False
+
+    lowerBound = not_number_rejector("Enter the lower bound: ")
+    while check is False:
+        try:
+            upperBound = int(raw_input("Enter the upper bound: "))
+            if upperBound > (lowerBound + 1):
+                print("Ok you need to guess " +
+                      "between {} and {}".format(lowerBound, upperBound))
+                check = True
+            elif upperBound == (lowerBound + 1):
+                print("Numbers too close together")
+            else:
+                print("{} isn't higher than {}, try again".format(upperBound,
+                                                                  lowerBound))
+        except:
+            print("Not an Integer")
+            continue
+
+    actualNumber = random.randint(lowerBound, upperBound)
+
+    guessed = False
+
+    while not guessed:
+        try:
+            guessedNumber = int(raw_input("Have a guess: "))
+            if guessedNumber == actualNumber:
+                print("You win, {} was the answer!".format(actualNumber))
+                guessed = True
+            elif guessedNumber <= lowerBound:
+                print("No, {} is too low to be valid!".format(guessedNumber))
+            elif guessedNumber >= upperBound:
+                print("No, {} is too high to be valid!".format(guessedNumber))
+            elif guessedNumber < actualNumber:
+                print("Guess higher!")
+            elif guessedNumber > actualNumber:
+                print("Guess lower!")
+        except:
+            print("Not an Integer")
+            continue
+    return "You got it!"
 
 
 if __name__ == "__main__":
