@@ -1,14 +1,14 @@
+
 # -*- coding: UTF-8 -*-
 """Week 3, Exercise 4."""
 from __future__ import division
 from __future__ import print_function
-import math
+# import math
 # import time
 
 
 def binary_search(low, high, actual_number):
     """Do a binary search.
-
     This is going to be your first 'algorithm' in the usual sense of the word!
     you'll give it a range to guess inside, and then use binary search to home
     in on the actual_number.
@@ -17,7 +17,6 @@ def binary_search(low, high, actual_number):
     as a dictionary. make sure that it has exactly these keys:
     {"guess": guess, "tries": tries}
     This will be quite hard, especially hard if you don't have a good diagram!
-
     Debugging helpers:
       * GUARD is there to make it only run a few times so that you can see
         what's happening.
@@ -27,18 +26,24 @@ def binary_search(low, high, actual_number):
       (You should remove them from the file, not comment them out, the
       tests aren't that smart yet.)
     """
-    tries = 1
-    guess = int(round((high + low) / 2, 0))
-    while guess != actual_number:
-        if guess > actual_number:
-            high = guess
-            guess = int(math.ceil((low + guess) / 2))
-        else:
-            low = guess
-            guess = int(math.floor((high + guess) / 2))
-        tries = (tries + 1)
-        print ("guess {},  actnum {}".format(guess, actual_number))
-return {"guess": guess, "tries": tries}
+    sum_dict = {"guess": 0, "tries": 0}
+    found = False
+    binary_min = low
+    binary_max = high - low
+    count = 0
+    while not found:
+        midpoint = int((binary_min + binary_max)/2)
+        count += 1
+        sum_dict["guess"] = count
+        if midpoint == actual_number:
+            found = True
+            return midpoint
+            sum_dict["tries"] = midpoint
+        elif midpoint > actual_number:
+            binary_max = midpoint
+        elif midpoint < actual_number:
+            binary_min = midpoint
+        return sum_dict
 
 
 if __name__ == "__main__":

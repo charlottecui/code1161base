@@ -5,6 +5,7 @@ Steps on the way to making your own guessing game.
 from __future__ import division
 from __future__ import print_function
 from exercise1 import not_number_rejector
+from exercise1 import super_asker
 import random
 
 
@@ -30,46 +31,32 @@ def advancedGuessingGame():
     print("Welcome to my guessing game")
     print("Let's pick both od the bounds")
 
-    check = False
-
-    lowerBound = not_number_rejector("Enter the lower bound: ")
-    while check is False:
-        try:
-            upperBound = int(raw_input("Enter the upper bound: "))
-            if upperBound > (lowerBound + 1):
-                print("Ok you need to guess " +
-                      "between {} and {}".format(lowerBound, upperBound))
-                check = True
-            elif upperBound == (lowerBound + 1):
-                print("Numbers too close together")
-            else:
-                print("{} isn't higher than {}, try again".format(upperBound,
-                                                                  lowerBound))
-        except:
-            print("Not an Integer")
-            continue
+    lowerBound = not_number_rejector("Enter a lower bound:")
+    print("Ok, so a number between {} and _?".format(lowerBound))
+    guess_input = False
+    while not guess_input:
+        upperBound = not_number_rejector("Enter an upper bound:")
+        if upperBound > lowerBound + 1:
+            print("Ok, so a number between {} and {}?"
+                  .format(lowerBound, upperBound))
+            guess_input = True
+        else:
+            print("Number too small!")
 
     actualNumber = random.randint(lowerBound, upperBound)
 
     guessed = False
 
     while not guessed:
-        try:
-            guessedNumber = int(raw_input("Have a guess: "))
-            if guessedNumber == actualNumber:
-                print("You win, {} was the answer!".format(actualNumber))
-                guessed = True
-            elif guessedNumber <= lowerBound:
-                print("No, {} is too low to be valid!".format(guessedNumber))
-            elif guessedNumber >= upperBound:
-                print("No, {} is too high to be valid!".format(guessedNumber))
-            elif guessedNumber < actualNumber:
-                print("Guess higher!")
-            elif guessedNumber > actualNumber:
-                print("Guess lower!")
-        except:
-            print("Not an Integer")
-            continue
+        guessedNumber = super_asker(lowerBound, upperBound)
+        print("you guessed {},".format(guessedNumber))
+        if guessedNumber == actualNumber:
+            print("you got it!! It was {}".format(actualNumber))
+            guessed = True
+        elif guessedNumber < actualNumber:
+            print("too small, try again ")
+        else:
+            print("too big, try again   ")
     return "You got it!"
 
 

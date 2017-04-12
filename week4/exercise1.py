@@ -28,7 +28,13 @@ def success_is_relative():
     # this depends on excecution context. Take a look at your CWD and remember
     # that it changes.
     # print(path, CWD)
-    pass
+    mode = "r"
+    file_path = "week1/pySuccessMessage.json"
+    success_message = open(file_path, mode)
+    response = success_message.read()
+    success_message.close()
+
+    return response.strip()
 
 
 def get_some_details():
@@ -50,9 +56,14 @@ def get_some_details():
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName":       None,
-            "password":       None,
-            "postcodePlusID": None
+    last = data["results"][0]["name"]["last"]
+    password = data["results"][0]["login"]["password"]
+    ID = data["results"][0]["Location"]["postcode"]
+    postcode = data["results"][0]["id"]["value"]
+
+    return {"lastName":       last,
+            "password":       password,
+            "postcodePlusID": int(ID) + int(postcode)
             }
 
 
@@ -88,7 +99,17 @@ def wordy_pyramid():
     ]
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     """
-    pass
+    word_p1 = []
+    url = "http://www.setgetgo.com/randomword/get.php?len="
+    for i in range(3, 20, 2):
+        f_url = url + str(i)
+        res = requests.get(f_url)
+        word_p1.append(res.text)
+    for i in range(20, 3, -2):
+        f_url = url + str(i)
+        res = requests.get(f_url)
+        word_p1.append(res.text)
+    return word_p1
 
 
 def wunderground():
@@ -103,7 +124,7 @@ def wunderground():
          variable and then future access will be easier.
     """
     base = "http://api.wunderground.com/api/"
-    api_key = "YOUR KEY - REGISTER TO GET ONE"
+    api_key = "915efa30583a9dc9"
     country = "AU"
     city = "Sydney"
     template = "{base}/{key}/conditions/q/{country}/{city}.json"

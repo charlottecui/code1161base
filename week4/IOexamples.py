@@ -34,7 +34,7 @@ def be_cool_for_ever(name, file_path):
 
 
 be_cool_for_ever("Ben", "ben_is_cool.txt")
-be_cool_for_ever("Ben", "week4/ben_is_cool.lol_UR_joking")
+be_cool_for_ever("Charlotte", "week1/ben_is_cool.lol_UR_joking")
 
 
 def who_is_cool(file_path):
@@ -72,7 +72,7 @@ def bury_time_capsule(something_for_your_kids_to_find, file_path):
         return False
 
 
-message_for_capsule = {"name": "Ben",
+message_for_capsule = {"name": "Charlotte",
                        "Year": 2017,
                        "Location": "Sydney",
                        "Greeting": "Yo whatup now and give a brother room",
@@ -80,7 +80,7 @@ message_for_capsule = {"name": "Ben",
                                "sucking once, to completely drain the " +
                                "average human of blood",
                        "Alphabet Inc Class A": "847.80USD",
-                       "fruit": ["apple", "apricot", "avocado", "abiu"]}
+                       "fruit": ["apple", "apricot", "grape", "abiu"]}
 
 bury_time_capsule(message_for_capsule, "under_the_patio.json")
 
