@@ -17,7 +17,6 @@ if LOCAL != CWD:
 
 def success_is_relative():
     """Read from a file.
-
     Read the success message from week 1, but from here, using a relative path.
     TIP: remember that it's relative to your excecution context, not this file.
          The tests are run from the code1161base directory, that's the
@@ -29,17 +28,14 @@ def success_is_relative():
     # that it changes.
     # print(path, CWD)
     mode = "r"
-    file_path = "week1/pySuccessMessage.json"
-    success_message = open(file_path, mode)
-    response = success_message.read()
-    success_message.close()
-
+    pySuccessMessage = open("week1/pySuccessMessage.json", mode)
+    response = pySuccessMessage.read()
+    pySuccessMessage.close()
     return response.strip()
 
 
 def get_some_details():
     """Parse some JSON.
-
     In lazyduck.json is a description of a person from https://randomuser.me/
     Read it in and use the json library to convert it to a dictionary.
     Return a new dictionary that just has the last name, password, and the
@@ -58,18 +54,17 @@ def get_some_details():
     data = json.loads(json_data)
     last = data["results"][0]["name"]["last"]
     password = data["results"][0]["login"]["password"]
-    ID = data["results"][0]["Location"]["postcode"]
-    postcode = data["results"][0]["id"]["value"]
+    postcode = data["results"][0]["location"]["postcode"]
+    ID = data["results"][0]["id"]["value"]
 
-    return {"lastName":       last,
-            "password":       password,
+    return {"lastName": last,
+            "password": password,
             "postcodePlusID": int(ID) + int(postcode)
             }
 
 
 def wordy_pyramid():
     """Make a pyramid out of real words.
-
     There is a random word generator here: http://www.setgetgo.com/randomword/
     The only argument that the generator takes is the length of the word.
     Use this and the requests library to make a word pyramid. The shortest
@@ -114,7 +109,6 @@ def wordy_pyramid():
 
 def wunderground():
     """Find the weather station for Sydney.
-
     Get some json from a request parse it and extract values.
     Sign up to https://www.wunderground.com/weather/api/ and get an API key
     TIP: reading json can someimes be a bit confusing. Use a tool like
@@ -133,15 +127,14 @@ def wunderground():
     the_json = json.loads(r.text)
     obs = the_json['current_observation']
 
-    return {"state":           None,
-            "latitude":        None,
-            "longitude":       None,
-            "local_tz_offset": None}
+    return {"state": obs["display_location"]["state"],
+            "latitude": obs["display_location"]["latitude"],
+            "longitude": obs["display_location"]["longitude"],
+            "local_tz_offset": obs["local_tz_offset"]}
 
 
 def diarist():
     """Read gcode and find facts about it.
-
     Read in Trispokedovetiles(laser).gcode and count the number of times the
     laser is turned on and off. That's the command "M10 P1".
     Write the answer (a number) to a file called 'lasers.pew'
@@ -152,7 +145,20 @@ def diarist():
     TIP: remember to commit 'lasers.pew' and push it to your repo, otherwise
          the test will have nothing to look at.
     """
-    pass
+    mode = "r"
+    laser_off = open(LOCAL + "/Trispokedovetiles(laser).gcode", mode)
+    data = laser_off.readlines()
+    laser_off.close()
+    command = "M10 P1"
+    count = 0
+    for line in data:
+        if command in line:
+            count += 1
+
+    mode = "w"
+    count_number = open(LOCAL + "/lasers.pew", mode)
+    count_number.write(str(count))
+    count_number.close()
 
 
 if __name__ == "__main__":
