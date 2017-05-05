@@ -54,6 +54,8 @@ def fizz_buzz():
             fizzBuzzList.append("Fizz")
         elif i % 5 == 0:
             fizzBuzzList.append("Buzz")
+        else:
+            fizzBuzzList.append("Fizz")
     return fizzBuzzList
 
 
@@ -91,12 +93,12 @@ def best_letter_for_pets():
     Reusing the pet_filter, find the letter that gives the longest list of pets
     TIP: return just a letter, not the list of animals.
     """
-    import string
-    the_alphabet = string.lowercase
-    pass
+    # import string
+    # the_alphabet = string.lowercase
 
 
-def make_filler_text_dictionary():
+
+# def make_filler_text_dictionary():
     """Make a dictionary of random words filler text.
 
     There is a random word generator here: http://www.setgetgo.com/randomword/
@@ -110,7 +112,7 @@ def make_filler_text_dictionary():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. ?len=
     TIP: you'll need the requests library
     """
-    import requests
+    # import requests
     pass
 
 
@@ -126,7 +128,7 @@ def random_filler_text(number_of_words=200):
     Bonus: extra mark if you get the paragraph to start with a
            capital letter and end with a full stop.
     """
-    import random
+    # import random
     pass
 
 
@@ -152,7 +154,7 @@ if __name__ == '__main__':
     print(put_behind_bars())
     print(pet_filter())
     print(best_letter_for_pets())
-    print(make_filler_text_dictionary())
+    # print(make_filler_text_dictionary())
     print(random_filler_text())
     print(fast_filler())
     for i in range(10):
