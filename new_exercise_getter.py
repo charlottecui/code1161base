@@ -1,6 +1,5 @@
 # -*- coding: UTF-8 -*-
 """Gets updated version of exercises.
-
 Checks for existing version and won't overwrite.
 """
 import os
@@ -13,8 +12,14 @@ def get_the_updates():
     """Decide if the other functions should download each file."""
     base = ("https://raw.githubusercontent.com/"
             "notionparallax/code1161base/master")
-    new_files = [        "/week8/exercise1.py",        "/week8/tests.py"    ]
-
+    new_files = [
+        # "/week2/exercise0.py",
+        # "/week4/IOexamples.py",
+        "/week8/exercise1.py",
+        "/week8/tests.py",
+        # "/week5/exercise4.py",
+        ""
+    ]
 
     for f in new_files:
         save_path = "./" + f
